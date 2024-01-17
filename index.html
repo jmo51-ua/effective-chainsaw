@@ -208,15 +208,6 @@
         });
 
         function sendEmail() {
-            Email.send({
-                SecureToken : "a0397910-9608-4925-8acb-bc19312ab732",
-                To : 'jmo51@gcloud.ua.es', //lourdes22lousc@gmail.com
-                From : "jmo51@gcloud.ua.es",
-                Subject : "CCCC",
-                Body : "CCCCC"
-            }).then(
-              message => console.log(message)
-            );
             var boton = document.body.querySelector('button.post-play');
             removeElement(boton);
 
