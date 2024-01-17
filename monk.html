@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <title>☢️Virus Nuclear☢️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #fondo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: pink; /* Fondo rosa */
+            z-index: 1; /* Poner por debajo del contenido principal */
+            opacity: 1;
+            transition: opacity 1s ease; /* Transición de la opacidad del fondo rosa */
+        }
+
+        body.mostrarTexto #fondo {
+            opacity: 0; /* Hacer el fondo rosa transparente cuando se añade la clase mostrarTexto */
+        }
+
+        #imagen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/coras.jpg'); /* Imagen de fondo */
+            background-size: cover;
+            z-index: 2; /* Poner por encima del fondo rosa */
+            opacity: 0; /* Inicialmente, la imagen estará oculta */
+            transition: opacity 4s ease; /* Transición de la opacidad de la imagen */
+        }
+
+        body.mostrarTexto #imagen {
+            opacity: 1; /* Mostrar la imagen cuando se añade la clase mostrarTexto */
+        }
+
+        #videoContainer {
+            position: relative;
+            z-index: 3; /* Poner por encima de todo */
+            opacity: 0; /* Inicialmente, el cuadro de video estará oculto */
+            width: 640px; /* Ajusta el ancho del cuadro de video según tus necesidades */
+            height: 360px; /* Ajusta la altura del cuadro de video según tus necesidades */
+            transform: translateY(100%); /* Empieza oculto, debajo del cuerpo */
+            transition: opacity 4s ease, transform 4s ease; /* Transición de opacidad y posición */
+            box-shadow: 20px 20px 40px rgb(255, 103, 103);
+        }
+
+        body.mostrarTexto #videoContainer {
+            opacity: 1; /* Mostrar el cuadro de video cuando se añade la clase mostrarTexto */
+            transform: translateY(0%); /* Muestra el cuadro de video moviéndolo de abajo arriba */
+        }
+
+        #videoContainer h1 {
+            position: absolute;
+            top: -60px;
+            left: 24%;
+            align-self: center;
+            color: black;
+            font-size: 24px;
+            z-index: 4; /* Poner por encima de todo, incluido el cuadro de video */
+            opacity: 0; /* Inicialmente, el texto estará oculto */
+            transition: opacity 4s ease; /* Transición de la opacidad del texto */
+        }
+
+        #videoContainer h1.post-play {
+            position: absolute;
+            top: 400px;
+            left: 24%;
+            align-self: center;
+            color: black;
+            font-size: 24px;
+            z-index: 4; /* Poner por encima de todo, incluido el cuadro de video */
+            opacity: 0; /* Inicialmente, el texto estará oculto */
+            display:none;
+        }
+
+        body.mostrarTexto #videoContainer h1 {
+            opacity: 1; /* Mostrar el texto cuando se añade la clase mostrarTexto */
+        }
+
+
+        button {
+            --border-radius: 15px;
+            --border-width: 4px;
+            appearance: none;
+            position: relative;
+            padding: 1em 2em;
+            border: 0;
+            background-color: #ff8282;
+            border-radius: 15px;
+            font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            color: #fff;
+            z-index: 2;
+           }
+           
+           button::after {
+                --m-i: linear-gradient(#000, #000);
+                --m-o: content-box, padding-box;
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                padding: var(--border-width);
+                border-radius: var(--border-radius);
+                background-image: conic-gradient(
+                        #488cfb,
+                        #29dbbc,
+                        #ddf505,
+                        #ff9f0e,
+                        #e440bb,
+                        #655adc,
+                        #488cfb
+                    );
+                -webkit-mask-image: var(--m-i), var(--m-i);
+                mask-image: var(--m-i), var(--m-i);
+                -webkit-mask-origin: var(--m-o);
+                mask-origin: var(--m-o);
+                -webkit-mask-clip: var(--m-o);
+                mask-clip: var(--m-o);
+                mask-composite: exclude;
+                -webkit-mask-composite: destination-out;
+                filter: hue-rotate(0);
+                animation: rotate-hue linear 500ms infinite;
+                animation-play-state: paused;
+           }
+           
+           button:hover::after {
+                animation-play-state: running;
+           }
+           
+           @keyframes rotate-hue {
+                to {
+                    filter: hue-rotate(1turn);
+                }
+           }
+           
+           button,
+           button::after {
+                box-sizing: border-box;
+           }
+           
+           button:active {
+                --border-width: 5px;
+           }
+
+           button.post-play{
+                position: absolute;
+                top: 470px;
+                left: 35%;
+                cursor: pointer;
+                transition: opacity 4s ease; /* Transición de la opacidad del botón */
+                opacity: 0;
+            }
+    </style>
+</head>
+<body>
+    <div id="fondo"></div>
+    <div id="imagen"></div>
+    <div id="videoContainer">
+        <!-- Cuadro de reproducción del video de YouTube -->
+        <h1>🐏 ⋆ 🐭  🎀  𝐿💙𝑀𝐿  🎀  🐭 ⋆ 🐏</h1>
+        <video width="100%" height="100%" src="./video/Favorite Crime - Olivia Rodrigo (Lyrics).mp4" controls></video>
+        <h1 class="post-play">🙈¿Quieres ser mi valentine?🙈</h1>
+        <button id='heart' class="post-play" onclick="sendEmail()"> OBVIAMENTE</button>
+    </div>
+
+    <script>
+        // Añade la clase mostrarTexto al cuerpo después de un breve retraso
+        setTimeout(function() {
+            document.body.classList.add('mostrarTexto');
+        }, 500);
+
+        var video = document.querySelector('video');
+        video.volume = 0;
+        video.addEventListener('play', function() {
+            // Detiene la transición cuando se reproduce el video
+            var textoPropsal = document.body.querySelector('h1.post-play');
+            textoPropsal.style.display = "block";
+            textoPropsal.style.opacity= 0;
+
+            var boton = document.body.querySelector('button.post-play');
+            boton.style.display = "block";
+            boton.style.opacity= 0;
+
+            setTimeout(function() {
+                textoPropsal.style.opacity = "1";
+                boton.style.opacity = "1";
+            }, 100);
+        });
+
+        function sendEmail() {
+            Email.send({
+                SecureToken : "a0397910-9608-4925-8acb-bc19312ab732",
+                To : 'jmo51@gcloud.ua.es', //lourdes22lousc@gmail.com
+                From : "jmo51@gcloud.ua.es",
+                Subject : "BBBBBBB",
+                Body : "BBBBBBBBBBB"
+            }).then(
+              message => console.log(message)
+            );
+            var boton = document.body.querySelector('button.post-play');
+            removeElement(boton);
+
+            var textoPropsal = document.body.querySelector('h1.post-play');
+            textoPropsal.textContent = '𝑀𝒾𝓇𝒶 𝓉𝓊 𝒸𝑜𝓇𝓇𝑒𝑜 𝓁𝑜𝓊𝓇𝒹𝑒𝓈𝟤𝟤𝓁𝑜𝓊𝓈𝒸@𝑔𝓂𝒶𝒾𝓁.𝒸𝑜𝓂!!!!';
+        }
+
+        function removeElement(nodo) {
+            if (nodo) {
+                nodo.remove();
+            }
+        }
+    </script>
+</body>
+</html>
